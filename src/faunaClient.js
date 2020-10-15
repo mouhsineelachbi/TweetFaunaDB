@@ -17,4 +17,16 @@ const {
   Join,
 } = faunadb.query;
 
-module.exports = client;
+module.exports = {
+  client,
+  Pagination,
+  Get,
+  Select,
+  Match,
+  Index,
+  Create,
+  Collection,
+  Lambda,
+  Var,
+  Join,
+};

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const client = require("./faunaClient");
+const { client, Get } = require("./faunaClient");
 
 router.get("/tweet/:id", async (req, res) => {
   const doc = await client.query(Get(Ref(Collection("tweets"), req.params.id)));
