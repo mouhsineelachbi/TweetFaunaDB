@@ -65,6 +65,7 @@ router.get("/tweet", async (req, res) => {
   res.send(docs);
 });
 
+// Post a relationship between two users
 router.post("/relationship", async (req, res) => {
   const data = {
     follower: Call(Fn("getUser"), "bob"),
@@ -72,6 +73,22 @@ router.post("/relationship", async (req, res) => {
   };
   const doc = await client
     .query(Create(Collection("relationships"), { data }))
+    .catch((e) => console.log(e));
+  res.send(doc);
+});
+
+// get followers feed  followed by a user
+// Get tweet by follower
+router.get("/feed", async (req, res) => {
+  const doc = await client
+    .query(
+      Paginate(
+        Join(
+          Match(Index("followers_by_followee"), Call(Fn("getUser"), "Alice")),
+          Index("tweets_by_user")
+        )
+      )
+    )
     .catch((e) => console.log(e));
   res.send(doc);
 });
