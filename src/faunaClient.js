@@ -6,7 +6,7 @@ const client = new faunadb.Client({
 });
 
 const {
-  Pagination,
+  Paginate,
   Get,
   Select,
   Match,
@@ -17,13 +17,15 @@ const {
   Var,
   Join,
   Ref,
+  Call,
+  Function: Fn,
 } = faunadb.query;
 
 const query = faunadb.query;
 
 module.exports = {
   client,
-  Pagination,
+  Paginate,
   Get,
   Select,
   Match,
@@ -34,4 +36,6 @@ module.exports = {
   Var,
   Join,
   Ref,
+  Call,
+  Function: Fn,
 };
