@@ -15,6 +15,12 @@ const {
   Ref,
 } = require("./faunaClient");
 
+// Testing the server
+router.get("/", (req, res) => {
+  res.send("Hello world");
+});
+
+// Getting tweet created by a specific user
 router.get("/tweet/:id", async (req, res) => {
   const doc = await client
     .query(Get(Ref(Collection("tweets"), req.params.id)))
@@ -23,10 +29,7 @@ router.get("/tweet/:id", async (req, res) => {
   res.send(doc);
 });
 
-router.get("/", (req, res) => {
-  res.send("Hello world");
-});
-
+// Posting a tweet
 router.post("/tweet", async (req, res) => {
   const data = {
     user: Select("ref", Get(Match(Index("users_by_name"), "bob"))),
