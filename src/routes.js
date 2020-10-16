@@ -23,8 +23,9 @@ router.get("/", (req, res) => {
 });
 
 // Collections
-// tweets : {user, text} or just { text }
-// users : { name } or { name, email }
+// tweets: {user, text} or just { text }
+// users: { name } or { name, email }
+// relationships: { follower, followee }
 
 // Getting tweet created by a specific user
 router.get("/tweet/:id", async (req, res) => {
