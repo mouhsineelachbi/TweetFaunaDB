@@ -29,7 +29,7 @@ router.get("/", (req, res) => {
 
 router.post("/tweet", async (req, res) => {
   const data = {
-    user: "",
+    user: Select("ref", Get(Match(Index("users_by_name"), "bob"))),
     text: "this is a new one",
   };
   const doc = await client.query(Create(Collection("tweets"), { data }));
