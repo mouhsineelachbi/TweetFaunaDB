@@ -64,4 +64,16 @@ router.get("/tweet", async (req, res) => {
   );
   res.send(docs);
 });
+
+router.post("/relationship", async (req, res) => {
+  const data = {
+    follower: Call(Fn("getUser"), "bob"),
+    followee: Call(Fn("getUser"), "Alice"),
+  };
+  const doc = await client
+    .query(Create(Collection("relationships"), { data }))
+    .catch((e) => console.log(e));
+  res.send(doc);
+});
+
 module.exports = router;
