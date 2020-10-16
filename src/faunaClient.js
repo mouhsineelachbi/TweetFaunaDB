@@ -1,4 +1,5 @@
 const faunadb = require("faunadb");
+require("dotenv").config();
 
 const client = new faunadb.Client({
   secret: process.env.KEY,
@@ -15,7 +16,10 @@ const {
   Lambda,
   Var,
   Join,
+  Ref,
 } = faunadb.query;
+
+const query = faunadb.query;
 
 module.exports = {
   client,
@@ -29,4 +33,5 @@ module.exports = {
   Lambda,
   Var,
   Join,
+  Ref,
 };

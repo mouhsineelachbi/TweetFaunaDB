@@ -1,7 +1,5 @@
 const app = require("express")();
-
 const faunadb = require("faunadb");
-
 const route = require("./routes");
 
 require("dotenv").config();
